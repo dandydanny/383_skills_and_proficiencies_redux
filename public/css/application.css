@@ -73,3 +73,13 @@ form.quirks {
   margin-right: 20px;
   width: 200px;
 }
+
+tr {
+  border-top: 1px solid grey;
+}
+
+td {
+  padding: 10px;
+  width: 10em;
+  border: 1px solid grey;
+}

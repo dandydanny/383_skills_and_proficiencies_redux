@@ -19,3 +19,14 @@ design_skills.each do |skill|
 end
 
 # TODO: create associations between users and skills
+allskills = Skill.all
+
+User.all.each do |user|
+  user.skills << allskills.sample(3)
+  user.proficiencies.each do |prof|
+    prof.update(years: rand(1..5), formal: [true, false].sample)
+    prof.save
+  end
+end
+
+

@@ -1,0 +1,28 @@
+<div class="container">
+  <h1><%= current_user.name %> is acquiring new skills!</h1>
+
+  <!-- current_user is a helper -->
+
+<form id="skill-form" action="/acquire" method="POST">
+
+  Select a skill to acquire:
+  <select name="skill" form="skill-form">
+      <% @skills.each do |skill| %>
+      <option value="<%= skill.name %>"><%= skill.name %></option>
+      <% end %>
+  </select>
+  <br>
+
+  Experience (years): <input type="number" name="years"><br>
+  Formal Education?:<br>
+  <input type="radio" name="formal" value="true">True<br>
+  <input type="radio" name="formal" value="false">False<br>
+  <button type="submit">Submit</button>
+</form>
+
+
+
+
+
+</div>
+

@@ -1,0 +1,46 @@
+<div class="container">
+  <h1><%= @user.name %>, let's edit some skillz</h1>
+
+  <table>
+    <tr>
+      <td>Skill</td>
+      <td>Context</td>
+      <td>PROF ID:</td>
+      <td>Years</td>
+      <td>Formal?</td>
+      <td></td>
+    </tr>
+
+
+      <form action="/edit" method="POST" name="edit-form">
+      <% @user.proficiencies.each_with_index do |prof, index| %>
+      <tr id="tr-<%= prof.id %>">
+        <td><%= prof.skill.name %></td>
+        <td><%= prof.skill.context %></td>
+        <td><%= prof.id %></td>
+        <td><input type="number" name="years-<%= prof.id %>" value="<%= prof.years %>"></td>
+        <td>
+          <!-- <input type="text" name="formal" value="<%= prof.formal %>"> -->
+
+          <% if prof.formal == true %>
+            <input type="radio" name="formal-<%= prof.id %>" value="true" checked> True<br>
+            <input type="radio" name="formal-<%= prof.id %>" value="false"> False
+            <% else %>
+            <input type="radio" name="formal-<%= prof.id %>" value="true"> True<br>
+            <input type="radio" name="formal-<%= prof.id %>" value="false" checked> False
+          <% end %>
+        </td>
+
+        <td>
+          <button class="save-button" value="<%= prof.id %>" id="save-button-<%= prof.id %>">Save</button>
+          <button class="delete-button" value="<%= prof.id %>" id="button-<%= prof.id %>">Dissociate</button>
+        </td>
+      </tr>
+      <% end %>
+      <button type="submit" id="save-changes-button">Save changes</button>
+      </form>
+
+  </table>
+  <p>Engineer's note: for the formal education field, a checkbox is preferred. I don't know how to submit a "false" boolean when a checkbox is not checked.</p>
+
+</div>

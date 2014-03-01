@@ -1,8 +1,12 @@
 <div class="container">
   <h1>Everyone's Skills and Levels</h1>
 
+
+  <h2>User & Skills</h2>
+
+
     <table>
-            <tr>
+      <tr>
         <td colspan="4">Name:</td>
       </tr>
       <tr>
@@ -11,17 +15,11 @@
         <td>Years:</td>
         <td>Formal:</td>
       </tr>
-    </table>
-    <br>
-    <table>
+
       <% @users.each do |user|%>
       <% profs = user.proficiencies %>
       <tr>
-        <td colspan="4"><b><%= user.name %></b>
-        <% if user.id == session[:user_id] %>
-          (Hey, that's you!)
-        <% end %>
-        </td>
+        <td colspan="4"><%= user.name %></td>
       </tr>
 
         <% profs.each do |prof| %>
@@ -35,14 +33,15 @@
 
       <% end %>
 
+
+
+
+
     </table>
 
-  <hr>
-  <a href="/add">Create a new skill, and add it to you</a><br>
-  <a href="/acquire">Select a skill and add it to you</a><br>
-  <a href="/edit">Edit an existing skill</a><br>
 
-  <%= %>
-  <% %>
+
+  <hr>
+
 
 </div>

@@ -1,8 +1,48 @@
 get '/' do
   # render home page
   @users = User.all
-
   erb :index
+end
+
+get '/add' do
+  erb :add
+end
+post '/add' do
+  p params
+  current_user.skills << Skill.create(name: params[:name], context: params[:context])
+  # s.update(years: yr)
+  # s.save
+  current_user.proficiencies.last.update(years: params[:years], formal: params[:formal])
+  redirect('/')
+end
+
+get '/acquire' do
+  @skills = Skill.all
+  erb :acquire
+end
+
+post '/acquire' do
+  p params
+  skill = Skill.find_by(name: params[:skill])
+  current_user.skills << skill
+  current_user.proficiencies.last.update(years: params[:years], formal: params[:formal])
+  redirect('/')
+end
+
+get '/edit' do
+  @user = current_user
+  erb :edit
+end
+
+post '/edit' do
+  puts "in post edit"
+  p params
+  return nil
+end
+
+# AJAX POST dissociate
+post '/dissociate' do
+  current_user.proficiencies.find(params[:id]).destroy
 end
 
 #----------- SESSIONS -----------

@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Create, and add skill to <%= current_user.name %></h1>
+
+  <!-- current_user is a helper -->
+
+<form action="/add" method="POST" id="add-form">
+  Skill name: <input type="text" name="name"><br>
+  Context: <input type="text" name="context"><br>
+  Experience (years): <input type="number" name="years"><br>
+  Formal Education?:<br>
+  <input type="radio" name="formal" value="true">True<br>
+  <input type="radio" name="formal" value="false">False<br>
+
+  <button type="submit">Submit</button>
+</form>
+
+
+
+</div>
+
